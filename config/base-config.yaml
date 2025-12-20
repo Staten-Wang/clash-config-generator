@@ -1,0 +1,44 @@
+# Clash.Meta 基础配置
+# 用于定义全局常量和配置顺序
+
+# ===== Clash.Meta 核心配置 =====
+# 混合端口 (HTTP + SOCKS5)
+mixed-port: 7890
+
+# 是否允许局域网连接
+allow-lan: true
+
+# 绑定地址
+bind-address: "*"
+
+# 运行模式 (rule/global/direct)
+mode: rule
+
+# 日志级别 (info/warning/error/debug/silent)
+log-level: info
+
+# 外部控制器地址
+external-controller: "127.0.0.1:9090"
+
+# 统一延迟
+unified-delay: true
+
+# TCP 并发
+tcp-concurrent: true
+
+# ===== GeoData 配置 =====
+# GeoData 模式
+geodata-mode: false
+
+# GeoData 加载器
+geodata-loader: "standard"
+
+# 自动更新 GeoData
+geo-auto-update: true
+
+# GeoData 更新间隔 (小时)
+geo-update-interval: 24
+
+# GeoX URL 配置
+geox-url:
+  geoip: "https://cdn.jsdelivr.net/gh/Hackl0us/GeoIP2-CN@release/Country.mmdb"

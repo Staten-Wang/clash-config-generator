@@ -1,0 +1,20 @@
+# @FileName  : proxy-providers.yaml
+# @Path      : config\proxy-providers.yaml
+# @Time      : 2025/12/20 12:12
+# @Author    : Wang-MieMie
+
+# Clash.Meta 代理服务商提供者配置
+# 完整格式: providerName: {type, url, interval, path, health-check, override}
+
+# 自定义提供者 - 请根据实际情况修改
+myProvider:
+  type: http
+  url: "https://your-provider-url/clash.yaml"
+  interval: 3600
+  path: ./providers/myProvider.yaml
+  health-check:
+    enable: true
+    url: "https://www.gstatic.com/generate_204"
+    interval: 300
+  override:
+    additional-prefix: "myProvider"

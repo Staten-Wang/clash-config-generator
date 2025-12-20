@@ -1,0 +1,42 @@
+# Clash.Meta 常规规则提供者配置
+# 格式: providerName: {type, behavior, url, path, interval}
+
+# 拒绝列表 (广告、恶意网站)
+reject:
+  type: "http"
+  behavior: "domain"
+  url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/reject.txt"
+  path: "./ruleset/reject.yaml"
+  interval: 86400
+
+# 私有网络
+private:
+  type: "http"
+  behavior: "domain"
+  url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/private.txt"
+  path: "./ruleset/private.yaml"
+  interval: 86400
+
+# 直连域名列表
+direct:
+  type: "http"
+  behavior: "domain"
+  url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/direct.txt"
+  path: "./ruleset/direct.yaml"
+  interval: 86400
+
+# 局域网 CIDR
+lancidr:
+  type: "http"
+  behavior: "ipcidr"
+  url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/lancidr.txt"
+  path: "./ruleset/lancidr.yaml"
+  interval: 86400
+
+# 中国 CIDR
+cncidr:
+  type: "http"
+  behavior: "ipcidr"
+  url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/cncidr.txt"
+  path: "./ruleset/cncidr.yaml"
+  interval: 86400
