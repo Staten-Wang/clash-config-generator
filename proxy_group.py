@@ -14,11 +14,12 @@ def create_select_pg(name,
                      filter_=None,
                      interval=30,
                      tolerance=100,
-                     timeout=100,
+                     timeout=1000,
                      lazy=True,
-                     url='https://www.gstatic.com/generate_204'):
+                     url='https://www.gstatic.com/generate_204',
+                     max_failed_times: int = 5):
     return create_proxy_group(name, 'select', proxy_name_list, provider_name_list,
-                              filter_, interval, tolerance, timeout, lazy, url)
+                              filter_, interval, tolerance, timeout, lazy, url, max_failed_times)
 
 
 def create_url_test_pg(name,
@@ -27,11 +28,12 @@ def create_url_test_pg(name,
                        filter_=None,
                        interval=30,
                        tolerance=100,
-                       timeout=100,
+                       timeout=1000,
                        lazy=True,
-                       url='https://www.gstatic.com/generate_204'):
+                       url='https://www.gstatic.com/generate_204',
+                       max_failed_times: int = 2):
     return create_proxy_group(name, 'url-test', proxy_name_list, provider_name_list,
-                              filter_, interval, tolerance, timeout, lazy, url)
+                              filter_, interval, tolerance, timeout, lazy, url, max_failed_times)
 
 
 #
@@ -43,9 +45,10 @@ def create_proxy_group(name,
                        filter_=None,
                        interval=30,
                        tolerance=100,
-                       timeout=100,
+                       timeout=1000,
                        lazy=True,
-                       url='https://www.gstatic.com/generate_204'):
+                       url='https://www.gstatic.com/generate_204',
+                       max_failed_times: int = 5):
     cfg = {
         'name': name,
         'type': type,
@@ -54,6 +57,7 @@ def create_proxy_group(name,
         'tolerance': tolerance,
         'lazy': lazy,
         'timeout': timeout,
+        'max-failed-times': max_failed_times,
     }
     if proxy_name_list is None and provider_name_list is None:
         raise

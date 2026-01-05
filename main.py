@@ -13,6 +13,7 @@ from typing import Dict, List, Sequence
 
 from operate_yaml import load_yaml, save_yaml
 from proxy_group import create_select_pg, create_url_test_pg
+from proxy_provider import organize_proxy_providers
 
 base_config_path = Path('config/base-config.yaml')
 proxy_providers_path = Path('config/proxy-providers.yaml')
@@ -40,6 +41,7 @@ def main():
 
     base_config = load_yaml(base_config_path)
     proxy_providers = load_yaml(proxy_providers_path)
+    proxy_providers = organize_proxy_providers(proxy_providers)
     app_rule_providers = load_yaml(app_rule_providers_path)
     general_rule_providers = load_yaml(general_rule_providers_path)
 
