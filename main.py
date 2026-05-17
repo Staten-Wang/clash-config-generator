@@ -23,8 +23,8 @@ general_rule_providers_path = Path('config/generalRuleProviders.yaml')
 group_maps_path = Path('config/group-maps.yaml')
 
 
-def build_proxy_select_pg(name: str, proxy_name_list):
-    return create_select_pg(name, proxy_name_list=proxy_name_list)
+def build_proxy_select_pg(name: str, proxy_name_list=None, provider_name_list=None):
+    return create_select_pg(name, proxy_name_list=proxy_name_list, provider_name_list=provider_name_list)
 
 
 def build_independent_node_pg(provider_name_list):
@@ -75,7 +75,8 @@ def main():
     proxy_select_gp = build_proxy_select_pg('代理选择', proxy_select_proxy_name)
 
     for_rule_gp = ['代理选择'] + proxy_select_proxy_name
-    rule_providers_gp = [build_proxy_select_pg(name, for_rule_gp) for name in app_rule_providers.keys()]
+    rule_providers_gp = [build_proxy_select_pg(name, for_rule_gp, proxy_provider_names)
+                         for name in app_rule_providers.keys()]
 
     all_gp = [proxy_select_gp, independent_node_pg]
     all_gp = all_gp + location_pg + rule_providers_gp
