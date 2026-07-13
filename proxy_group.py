@@ -36,7 +36,19 @@ def create_url_test_pg(name,
                               filter_, interval, tolerance, timeout, lazy, url, max_failed_times)
 
 
-#
+def create_fallback_pg(name,
+                       proxy_name_list=None,
+                       provider_name_list=None,
+                       filter_=None,
+                       interval=30,
+                       tolerance=100,
+                       timeout=3000,
+                       lazy=True,
+                       url='https://www.gstatic.com/generate_204',
+                       max_failed_times: int = 2):
+    return create_proxy_group(name, 'fallback', proxy_name_list, provider_name_list,
+                              filter_, interval, tolerance, timeout, lazy, url, max_failed_times)
+
 
 def create_proxy_group(name,
                        type: str,
