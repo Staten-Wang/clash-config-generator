@@ -12,7 +12,7 @@ from pathlib import Path
 from typing import Dict, List, Sequence
 
 from operate_yaml import load_yaml, save_yaml
-from proxy_group import create_select_pg, create_url_test_pg
+from proxy_group import create_fallback_pg, create_select_pg
 from proxy_provider import organize_proxy_providers
 
 base_config_path = Path('config/base-config.yaml')
@@ -33,7 +33,7 @@ def build_independent_node_pg(provider_name_list):
 
 def build_location_pg(name: str, map_name: Sequence[str], flag: str, provider_name_list):
     filter_ = f'''(?i)({'|'.join(map_name)})'''
-    return create_url_test_pg(f'{flag}|-最优路线-|{name}', provider_name_list=provider_name_list, filter_=filter_)
+    return create_fallback_pg(f'{flag}|-最优路线-|{name}', provider_name_list=provider_name_list, filter_=filter_)
 
 
 def main():
