@@ -32,7 +32,7 @@ def build_independent_node_pg(provider_name_list):
 
 
 def build_location_pg(name: str, map_name: Sequence[str], flag: str, provider_name_list):
-    filter_ = f'''(?i)({'|'.join(map_name)})'''
+    filter_ = f"(?i)({'|'.join(map_name)})"
     return create_fallback_pg(f'{flag}|-最优路线-|{name}', provider_name_list=provider_name_list, filter_=filter_)
 
 
@@ -83,7 +83,7 @@ def main():
     cfg['proxy-groups'] = all_gp
 
     # rule make
-    rule_providers_gp_rule = [f'RULE-SET,{gp['name']},{gp['name']}' for gp in rule_providers_gp]
+    rule_providers_gp_rule = [f"RULE-SET,{gp['name']},{gp['name']}" for gp in rule_providers_gp]
 
     general_rule_providers_rules = [
         'RULE-SET,reject,REJECT',
@@ -93,7 +93,7 @@ def main():
         'RULE-SET,cncidr,DIRECT',
     ]
 
-    rules = rule_providers_gp_rule + general_rule_providers_rules + ['GEOIP,CN,DIRECT,no-resolve', 'MATCH,代理选择']
+    rules = rule_providers_gp_rule + general_rule_providers_rules + ['MATCH,代理选择']
     cfg['rules'] = rules
     cfg['converted'] = True
 
